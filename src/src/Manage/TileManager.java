@@ -11,7 +11,7 @@ import UI.ImageLoader;
 import panelCore.GamePanel;
 
 public class TileManager {
-    
+
     GamePanel gp;
     public int[][] mapData;
     public BufferedImage grassImage; 

@@ -8,13 +8,12 @@ import java.util.ArrayList;
 
 public class Miner extends PlantTower implements UpgradeTower {
     private int level = 1;
-    private final int MAX_LEVEL = 3; // เหมืองอัปได้แค่ 3 เลเวล
-    private int upgradeCost = 100;   // เหมืองอัปแพงกว่าป้อมปืน
+    private final int MAX_LEVEL = 3;
+    private int upgradeCost = 100;   
     private int timer = 0;
     public Miner(int col, int row) {
         super(col, row);
-        // ตั้งค่าเฉพาะของเครื่องขุด
-        this.maxHp = 100; // เครื่องขุดบอบบางกว่า
+        this.maxHp = 100; 
         this.hp = maxHp;
     }
     public void collectGold(ArrayList<GoldMine> mines, Coins coins) {
@@ -24,7 +23,7 @@ public class Miner extends PlantTower implements UpgradeTower {
             if ((Math.abs(this.col - mine.col) == 1 && this.row == mine.row) ||
                 (Math.abs(this.row - mine.row) == 1 && this.col == mine.col)) {
                 int earned = (level == 1) ? 10 : (level == 2) ? 15 : 20;
-                coins.addCoins(earned); // ✅ เพิ่มเงินจริงๆ
+                coins.addCoins(earned); 
             }
         }
         timer = 0;

@@ -8,10 +8,12 @@ public class Bullet {
     private Enemy target;
     private double speed = 10.0; 
     public boolean isActive = true;
-    public Bullet(double x, double y, Enemy target) {
+    private int damage;
+    public Bullet(double x, double y, Enemy target,int damage) {
         this.x = x;
         this.y = y;
         this.target = target;
+        this.damage = damage;
     }
 
     public void update() {
@@ -24,7 +26,7 @@ public class Bullet {
         double distance = Math.sqrt(diffX*diffX + diffY*diffY);
         
         if (distance <= speed) {
-            target.takeDamage(10); 
+            target.takeDamage(this.damage); 
             isActive = false; 
         } else {
             x += (diffX / distance) * speed;

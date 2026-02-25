@@ -12,6 +12,7 @@ public class Turret extends PlantTower implements UpgradeTower {
     private int level = 1;
     private final int MAX_LEVEL = 3;
     private int upgradeCost = 50; 
+    private int damage = 10;
     public Turret(int col, int row) {
         super(col, row);
         this.maxHp = 200;
@@ -36,7 +37,7 @@ public class Turret extends PlantTower implements UpgradeTower {
         double targetY = (e.getY() * tileSize) + (tileSize / 2.0);
         double dist = Math.hypot(e.getX() - centerX, e.getY() - centerY);
         if (dist < range) { 
-            bullets.add(new Bullet(centerX, centerY, e));
+            bullets.add(new Bullet(centerX, centerY, e,this.damage));
             cooldown = 30; 
             break; 
         }
@@ -57,9 +58,11 @@ public class Turret extends PlantTower implements UpgradeTower {
         if (level == 2) {
             this.maxHp += 100;       
             this.upgradeCost = 150;  
+            this.damage += 20;
         } else if (level == 3) {
             this.maxHp += 200;
-            this.upgradeCost = 0;    
+            this.upgradeCost = 0;  
+            this.damage += 30;  
         }
         this.hp = this.maxHp; 
         return true;
@@ -71,6 +74,9 @@ public class Turret extends PlantTower implements UpgradeTower {
     @Override
     public boolean isMaxLevel() { 
         return level >= MAX_LEVEL; 
+    }
+    public int getDamage(){
+        return damage;
     }
     @Override
     public void draw(Graphics2D g2, int tileSize) {
