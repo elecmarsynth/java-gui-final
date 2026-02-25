@@ -11,9 +11,7 @@ public class WaveManager {
     private long lastWaveTime;
     private long waveCooldown = 60000;
     private boolean isStarted = false;
-
     public WaveManager() {}
-
     public void start(ArrayList<Enemy> monsters, int w, int h) {
         if (isStarted) return;
         isStarted = true;
@@ -39,7 +37,6 @@ public class WaveManager {
         Random rand = new Random();
 
         for (int i = 0; i < monsterCount; i++) {
-            // สุ่มตำแหน่ง spawn รอบขอบจอ
             double spawnX, spawnY;
             if (rand.nextBoolean()) {
                 spawnX = rand.nextBoolean() ? -50 : w + 50;
@@ -48,22 +45,16 @@ public class WaveManager {
                 spawnX = rand.nextInt(w);
                 spawnY = rand.nextBoolean() ? -50 : h + 50;
             }
-
-            // สุ่มประเภทมอนสเตอร์: TANK 20%, SPEED 30%, NORMAL 50%
             int chance = rand.nextInt(100);
             MonsterType spawnType;
             if (chance < 20)      spawnType = MonsterType.TANK;
             else if (chance < 50) spawnType = MonsterType.SPEED;
             else                  spawnType = MonsterType.NORMAL;
-
-            // ✅ ใช้ rpgMonster จริงๆ แทน Farmer
             monsters.add(new rpgMonster(spawnX, spawnY, spawnType, currentWave));
         }
     }
-
     public boolean isGameStarted() { return isStarted; }
     public int getWaveNumber()     { return currentWave; }
-
     public long getTimeLeft() {
         if (!isStarted) return waveCooldown;
         long left = waveCooldown - (System.currentTimeMillis() - lastWaveTime);

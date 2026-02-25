@@ -6,7 +6,6 @@ import UI.ImageLoader;
 
 public class GoldMine {
     public int col, row;
-    public int goldAmount = 5000; // ปริมาณทองที่มีในเหมือง
 
     public GoldMine(int col, int row) {
         this.col = col;

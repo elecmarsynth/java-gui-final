@@ -12,7 +12,7 @@ public class Turret extends PlantTower implements UpgradeTower {
     private int cooldown = 0;
     private int level = 1;
     private final int MAX_LEVEL = 3;
-    private int upgradeCost = 50; // ราคาเริ่มต้นในการอัปไปเลเวล 2
+    private int upgradeCost = 50; 
 
     public Turret(int col, int row) {
         super(col, row);
@@ -20,7 +20,6 @@ public class Turret extends PlantTower implements UpgradeTower {
         
     }
     public void update(ArrayList<Enemy> enemies) {
-        // Update bullets
         for (int i = 0; i < bullets.size(); i++) {
             bullets.get(i).update();
             if (!bullets.get(i).isActive) {
@@ -28,15 +27,14 @@ public class Turret extends PlantTower implements UpgradeTower {
                 i--;
             }
         }
-        // Shooting Logic
+       
         if (cooldown > 0) { cooldown--; return; }
-
         for (Enemy e : enemies) {
             double dist = Math.hypot(e.getX() - (col*64+32), e.getY() - (row*64+32));
-            if (dist < 200) { // Range 200
+            if (dist < 200) { 
                 bullets.add(new Bullet(col * 64 + 32, row * 64 + 32, e));
                 cooldown = 30; 
-                break; // ยิงทีละตัว
+                break; 
             }
         }
     }
@@ -49,20 +47,17 @@ public class Turret extends PlantTower implements UpgradeTower {
     @Override
     public boolean upgrade() {
         if (isMaxLevel()){ 
-            return false; // ถ้าตันแล้ว อัปเกรดไม่ได้
+            return false; 
         }
         level++;
-        // กำหนดสถานะตามเลเวลที่เปลี่ยนไป (แต่ละคลาสออกแบบได้อิสระ)
         if (level == 2) {
-            this.maxHp += 100;       // ถึกขึ้น
-            this.upgradeCost = 150;  // ราคาสำหรับอัปไปเลเวล 3
-            // เพิ่มดาเมจได้ที่นี่ถ้ามีตัวแปรดาเมจ
+            this.maxHp += 100;       
+            this.upgradeCost = 150;  
         } else if (level == 3) {
             this.maxHp += 200;
-            this.upgradeCost = 0;    // เลเวลตันแล้ว
+            this.upgradeCost = 0;    
         }
-        
-        this.hp = this.maxHp; // อัปเกรดเสร็จให้เลือดเต็ม
+        this.hp = this.maxHp; 
         return true;
     }
     @Override

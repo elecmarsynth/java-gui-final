@@ -1,7 +1,6 @@
 package Manage;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-
 import Enemy.Enemy;
 import panelCore.GamePanel;
 
@@ -9,11 +8,9 @@ public class EnemyManager {
     GamePanel gp;
     public ArrayList<Enemy> enemies = new ArrayList<>();
     int spawnCounter = 0;
-
     public EnemyManager(GamePanel gp) {
         this.gp = gp;
     }
-
     public void update() {
     for (int i = 0; i < enemies.size(); i++) {
         Enemy e = enemies.get(i);

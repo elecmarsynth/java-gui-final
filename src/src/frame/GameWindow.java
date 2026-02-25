@@ -3,14 +3,11 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import Tower.PlantTower;
 import UI.ImageLoader;
 import UI.TowerMenu;
 import UI.UpgradeMenu;
 import panelCore.GamePanel;
-
-
 public class GameWindow {
     private CardLayout cardLayout = new CardLayout();
     private JPanel bottomPanel = new JPanel(cardLayout);
@@ -28,15 +25,14 @@ public GameWindow() {
     bottomPanel.add(towerMenu, "TowerMenu");
     bottomPanel.add(upgradeMenu, "UpgradeMenu");
     window.add(bottomPanel, BorderLayout.SOUTH);
-    window.pack();                      // ✅ auto คำนวณจาก preferredSize ของทุก component
-    window.setLocationRelativeTo(null); // ✅ เปิดตรงกลางจอ
+    window.pack();                      
+    window.setLocationRelativeTo(null); 
     window.setVisible(true);
     }
     public void showUpgrade(PlantTower tower) {
-    upgradeMenu.showUpgrade(tower); // ส่งไม้ต่อให้ upgradeMenu จัดการตัวเอง
+    upgradeMenu.showUpgrade(tower); 
     }
-    // ใน GameWindow.java (ตัวกลาง)
     public void showTower() {
-        towerMenu.showTower(); // เรียกใช้เมธอดที่ย้ายไปอยู่ใน TowerMenu
+        towerMenu.showTower(); 
     }    
 }

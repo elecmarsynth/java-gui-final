@@ -11,7 +11,6 @@ public class Miner extends PlantTower implements UpgradeTower {
     private final int MAX_LEVEL = 3; // เหมืองอัปได้แค่ 3 เลเวล
     private int upgradeCost = 100;   // เหมืองอัปแพงกว่าป้อมปืน
     private int timer = 0;
-    private int goldCollected = 0;
     public Miner(int col, int row) {
         super(col, row);
         // ตั้งค่าเฉพาะของเครื่องขุด
@@ -25,8 +24,6 @@ public class Miner extends PlantTower implements UpgradeTower {
             if ((Math.abs(this.col - mine.col) == 1 && this.row == mine.row) ||
                 (Math.abs(this.row - mine.row) == 1 && this.col == mine.col)) {
                 int earned = (level == 1) ? 10 : (level == 2) ? 15 : 20;
-                goldCollected += earned;
-                mine.goldAmount -= earned;
                 coins.addCoins(earned); // ✅ เพิ่มเงินจริงๆ
             }
         }

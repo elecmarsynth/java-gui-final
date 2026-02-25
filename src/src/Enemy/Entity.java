@@ -2,10 +2,6 @@ package Enemy;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-/**
- * Base class สำหรับ object ทั่วไปในเกม (ไม่ใช่ Enemy)
- * เช่น Projectile, Item, ฯลฯ
- */
 public abstract class Entity {
     protected double x, y;
     protected int size;

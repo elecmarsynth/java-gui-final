@@ -23,9 +23,8 @@ public class Bullet {
         double diffX = target.getX() - x;
         double diffY = target.getY() - y;
         double distance = Math.sqrt(diffX*diffX + diffY*diffY);
-
         if (distance <= speed) {
-            target.takeDamage(100); // DMG 10
+            target.takeDamage(10); 
             isActive = false; 
         } else {
             x += (diffX / distance) * speed;

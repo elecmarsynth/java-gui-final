@@ -6,7 +6,7 @@ public abstract class PlantTower {
     protected int hp, maxHp;
     protected double x, y;
     protected int size;
-    protected int totalSpent; // เงินที่จ่ายไปทั้งหมด (ซื้อ + อัปเกรด)
+    protected int totalSpent; 
     
     
     public PlantTower(int col, int row) {
@@ -28,13 +28,13 @@ public abstract class PlantTower {
     }
     public abstract void draw(Graphics2D g2, int tileSize);
     public Rectangle getBounds() {
-        return new Rectangle((int)x, (int)y, size, size); // สำหรับเช็คการชน
+        return new Rectangle((int)x, (int)y, size, size); 
     }
     public boolean isDestroyed() {
-        return hp <= 0; // สำหรับเช็คว่าป้อมแตกหรือยัง เพื่อจบเกม
+        return hp <= 0; 
     }
     public void takeDamage(int damage) {
-        hp -= damage; // สำหรับรับดาเมจจากมอนสเตอร์
+        hp -= damage; 
     }
     public int getCol() { 
         return col; 

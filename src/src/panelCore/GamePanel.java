@@ -24,9 +24,9 @@ public class GamePanel extends JPanel implements Runnable {
     private TowerManager towerM;
     private GameWindow window;
     private int selectedTowerType = 0;
-    private final int TURRET_COST = 20;  // add ราคา
-    private final int MINER_COST = 10;  // add ราคา
-    private Coins coins = new Coins();   //add
+    private final int TURRET_COST = 20;  
+    private final int MINER_COST = 10;  
+    private Coins coins = new Coins();   
     WaveManager waveM = new WaveManager();
     DisPlayTime hud = new DisPlayTime();
 
@@ -36,16 +36,11 @@ public class GamePanel extends JPanel implements Runnable {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int realScreenWidth  = screenSize.width;
         int realScreenHeight = screenSize.height;
-
-        // ✅ คำนวณ tileSize ให้พอดีกับจอ (เลือกค่าที่เล็กกว่าเพื่อไม่ให้ล้น)
         int tileSizeByWidth  = realScreenWidth  / maxCol;
         int tileSizeByHeight = realScreenHeight / maxRow;
         tileSize = Math.min(tileSizeByWidth, tileSizeByHeight);
-
-        // ✅ คำนวณขนาดจริงที่ใช้
         screenWidth  = tileSize * maxCol;
         screenHeight = tileSize * maxRow;
-
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         tileM = new TileManager(this);
         enemyM = new EnemyManager(this);
@@ -62,7 +57,6 @@ public class GamePanel extends JPanel implements Runnable {
                 window.showUpgrade(clickedTower);
                 setSelectedTower(0);
             } 
-            // 3. ถ้าไม่เจอ (คลิกพื้นว่าง) ให้กลับไปหน้าเลือกป้อมปกติ
                 else {
                     if (selectedTowerType != 0) {
                         int cost = (selectedTowerType == 1) ? TURRET_COST : MINER_COST; //add ตัดเงิน
@@ -70,7 +64,7 @@ public class GamePanel extends JPanel implements Runnable {
                             towerM.addTower(col, row, selectedTowerType);
                         } else {
                             System.out.println("out of money");
-                        } // จนถึงตรงนี้
+                        } 
                         setSelectedTower(0);
                     } else {
                         window.showTower();
@@ -106,7 +100,7 @@ public class GamePanel extends JPanel implements Runnable {
     towerM.update(enemyM.enemies);
     waveM.update(enemyM.enemies, screenWidth, screenHeight); // ✅ เพิ่ม
     if (towerM.isBaseDestroyed()) {
-        gameThread = null; // หยุด game loop
+        gameThread = null; 
         System.out.println("GAME OVER");
     }
     }

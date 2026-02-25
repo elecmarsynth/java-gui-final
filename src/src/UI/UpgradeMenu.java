@@ -10,8 +10,6 @@ public class UpgradeMenu extends JPanel {
     PlantTower selectedTower;
     private CardLayout cardLayout;
     private JPanel bottomPanel;
-
-    // แก้ไข Constructor ให้รับ CardLayout และ Panel หลักเข้ามา
     public UpgradeMenu(GamePanel gp, CardLayout cl, JPanel bp,TowerMenu towerMenu) {
         this.gp = gp;
         this.cardLayout = cl;
@@ -21,11 +19,10 @@ public class UpgradeMenu extends JPanel {
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
         updateMenu(null);
     }
-    // ย้าย Method นี้มาไว้ที่นี่ตามต้องการ
     public void showUpgrade(PlantTower tower) {
         this.updateMenu(tower); 
         if (cardLayout != null && bottomPanel != null) {
-            cardLayout.show(bottomPanel, "UpgradeMenu"); // สั่งแสดงตัวเอง
+            cardLayout.show(bottomPanel, "UpgradeMenu"); 
             bottomPanel.revalidate();
             bottomPanel.repaint();
         }
@@ -33,33 +30,26 @@ public class UpgradeMenu extends JPanel {
     public void updateMenu(PlantTower tower) {
     this.selectedTower = tower;
     this.removeAll();
-
     if (tower != null) {
-        // เช็คว่าป้อมนี้รองรับการอัปเกรด (Implement UpgradeTower ไว้) หรือไม่
         if (tower instanceof UpgradeTower) {
             UpgradeTower ut = (UpgradeTower) tower;
-
-            // แสดงชื่อป้อมและเลเวล
             JLabel label = new JLabel(ut.getName() + " Level: " + ut.getLevel());
             label.setForeground(Color.WHITE);
             this.add(label);
-
-            // แสดงปุ่มอัปเกรด พร้อมราคาที่ดึงมาจากแต่ละคลาสเอง
             JButton btnUpgrade = new JButton("Upgrade (" + ut.getUpgradeCost() + ")");
             btnUpgrade.addActionListener(e -> {
                 int cost = ut.getUpgradeCost();
-                if (gp.getCoins().spendCoins(cost)) { // ✅ ตัดเงินก่อน
+                if (gp.getCoins().spendCoins(cost)) { 
                     if (ut.upgrade()) {
-                        tower.addSpent(cost); // ✅ บันทึกค่าอัปเกรด
+                        tower.addSpent(cost); 
                         updateMenu(tower);
                     } else {
-                        gp.getCoins().addCoins(cost); // ✅ คืนเงินถ้าอัปเกรดไม่ได้
+                        gp.getCoins().addCoins(cost); 
                     }
                 }
             });
             this.add(btnUpgrade);
         }else {
-            // กรณีเป็นป้อมที่อัปเกรดไม่ได้ (ถ้ามี)
             JLabel label = new JLabel("Tower: " + tower.getClass().getSimpleName());
             label.setForeground(Color.WHITE);
             this.add(label);
