@@ -29,7 +29,7 @@ public class GameWindow {
         bottomPanel.add(upgradeMenu, "UpgradeMenu");
         window.add(bottomPanel, BorderLayout.SOUTH);
         window.pack();
-        // window.setSize(1920, 720);
+
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 

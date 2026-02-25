@@ -42,7 +42,6 @@ public class GamePanel extends JPanel implements Runnable {
     private Coins coins = new Coins();
     WaveManager waveM = new WaveManager();
     DisPlayTime hud = new DisPlayTime();
-
     public boolean isGameOver = false;
     private Gameover.GameOver gameOverScene = new Gameover.GameOver();
 
