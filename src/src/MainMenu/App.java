@@ -154,7 +154,7 @@ public class App {
         // gd.setFullScreenWindow(frame);
         frame.setVisible(true);
 
-        java.net.URL bgURL = App.class.getResource("plants-vs-zombies-game-of-the-year-edition-1w6gy.jpg");
+        java.net.URL bgURL = App.class.getResource("01.jpg");
         BackgroundPanel bgPanel = new BackgroundPanel(bgURL);
         bgPanel.setLayout(new CardLayout());
 
