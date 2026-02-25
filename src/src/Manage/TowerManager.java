@@ -62,7 +62,7 @@ private boolean isAdjacentToGoldMine(int col, int row) {
     public void update(ArrayList<Enemy> enemies) {
     for (PlantTower t : towers) {
         if (t instanceof Turret) {
-            ((Turret) t).update(enemies);
+            ((Turret) t).update(enemies,gp.getTileSize());
         }
         if (t instanceof Miner) {
             ((Miner) t).collectGold(gp.getTileM().getGoldMines(), gp.getCoins());

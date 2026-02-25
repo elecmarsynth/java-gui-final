@@ -14,8 +14,8 @@ import frame.GameWindow;
 
 public class GamePanel extends JPanel implements Runnable {
     private int tileSize;
-    private int maxCol = 22;
-    private int maxRow = 11;
+    private int maxCol = 30;
+    private int maxRow = 15;
     private int screenWidth;
     private int screenHeight; 
     private Thread gameThread;

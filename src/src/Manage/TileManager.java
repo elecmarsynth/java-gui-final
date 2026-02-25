@@ -19,18 +19,8 @@ public class TileManager {
     public TileManager(GamePanel gp) {
         this.gp = gp;
         mapData = new int[gp.getMaxRow()][gp.getMaxCol()];
-        getTileImage();
-        
         setupMap();
     }
-    public void getTileImage() {
-        try {
-            grassImage = ImageIO.read(getClass().getResourceAsStream("/image/a.png"));
-        } catch (IOException e) {
-            e.printStackTrace(); 
-        }
-    }
-
     public void setupMap() {
         for (int r = 0; r < gp.getMaxRow(); r++) {
             for (int c = 0; c < gp.getMaxCol(); c++) {
@@ -42,7 +32,7 @@ public class TileManager {
         placeMines();
     }
     private void placeMines() {
-        int minesToPlace = 3;
+        int minesToPlace = 7;
         while (minesToPlace > 0) {
             int r = (int)(Math.random() * (gp.getMaxRow() - 2)) + 1;
             int c = (int)(Math.random() * (gp.getMaxCol() - 2)) + 1;

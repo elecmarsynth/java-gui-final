@@ -19,25 +19,30 @@ public class Turret extends PlantTower implements UpgradeTower {
         this.maxHp = 200;
         
     }
-    public void update(ArrayList<Enemy> enemies) {
-        for (int i = 0; i < bullets.size(); i++) {
-            bullets.get(i).update();
-            if (!bullets.get(i).isActive) {
-                bullets.remove(i);
-                i--;
-            }
-        }
-       
-        if (cooldown > 0) { cooldown--; return; }
-        for (Enemy e : enemies) {
-            double dist = Math.hypot(e.getX() - (col*64+32), e.getY() - (row*64+32));
-            if (dist < 200) { 
-                bullets.add(new Bullet(col * 64 + 32, row * 64 + 32, e));
-                cooldown = 30; 
-                break; 
-            }
+    public void update(ArrayList<Enemy> enemies, int tileSize) {
+    // อัปเดตกระสุนเหมือนเดิม
+    for (int i = 0; i < bullets.size(); i++) {
+        bullets.get(i).update();
+        if (!bullets.get(i).isActive) {
+            bullets.remove(i);
+            i--;
         }
     }
+   
+    if (cooldown > 0) { cooldown--; return; }
+    int centerX = (col * tileSize) + (tileSize / 2);
+    int centerY = (row * tileSize) + (tileSize / 2);
+    int range = 200; 
+
+    for (Enemy e : enemies) {
+        double dist = Math.hypot(e.getX() - centerX, e.getY() - centerY);
+        if (dist < range) { 
+            bullets.add(new Bullet(centerX, centerY, e));
+            cooldown = 30; 
+            break; 
+        }
+    }
+}
     public String getName() { 
         return "Turret"; }
     @Override

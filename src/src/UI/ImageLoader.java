@@ -7,6 +7,7 @@ public class ImageLoader {
     public static BufferedImage miner;
     public static BufferedImage base;
     public static BufferedImage goldMine;
+    public static BufferedImage grassImage;
     public static BufferedImage enemyNormal;
     public static BufferedImage enemyTank;
     public static BufferedImage enemySpeed;
@@ -14,9 +15,11 @@ public class ImageLoader {
     public static void loadAll() {
         try {
             turret      = ImageIO.read(ImageLoader.class.getResourceAsStream("/image/Turret.png"));
-            miner       = ImageIO.read(ImageLoader.class.getResourceAsStream("/image/Sunflower.png"));
+            miner       = ImageIO.read(ImageLoader.class.getResourceAsStream("/image/pickaxe.png"));
             base        = ImageIO.read(ImageLoader.class.getResourceAsStream("/image/WorldTree.png"));
-            goldMine    = ImageIO.read(ImageLoader.class.getResourceAsStream("/image/Sun.png"));
+            goldMine    = ImageIO.read(ImageLoader.class.getResourceAsStream("/image/Yellow.png"));
+            grassImage    = ImageIO.read(ImageLoader.class.getResourceAsStream("/image/grass.png"));
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
