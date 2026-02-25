@@ -21,5 +21,7 @@ public class DisPlayTime {
         String timerText = "⏱ Next Wave: " + timeLeft + "s";
         int timerWidth = fm.stringWidth(timerText);
         g2.drawString(timerText, screenWidth - timerWidth - 20, 40);
+
+        
     }
 }
