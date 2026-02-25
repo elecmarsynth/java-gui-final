@@ -9,7 +9,7 @@ import Enemy.rpgMonster;
 public class WaveManager {
     private int currentWave = 0;
     private long lastWaveTime;
-    private long waveCooldown = 30000;
+    private long waveCooldown = 10000;
     private boolean isStarted = false;
     public WaveManager() {}
     public void start(ArrayList<Enemy> monsters, int w, int h) {

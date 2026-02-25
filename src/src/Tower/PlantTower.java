@@ -5,7 +5,6 @@ public abstract class PlantTower {
     protected int col, row;
     protected int hp, maxHp;
     protected double x, y;
-    protected int size;
     protected int totalSpent; 
     
     
@@ -14,9 +13,6 @@ public abstract class PlantTower {
         this.row = row;
         this.maxHp = 100;
         this.hp = maxHp;
-        this.x = x;
-        this.y = y;
-        this.size = size;
     }
 
     public void addSpent(int amount) {
@@ -28,11 +24,12 @@ public abstract class PlantTower {
     }
     public abstract void draw(Graphics2D g2, int tileSize);
     public Rectangle getBounds() {
-        return new Rectangle((int)x, (int)y, size, size); 
+        return new Rectangle((int)x, (int)y); 
     }
     public boolean isDestroyed() {
         return hp <= 0; 
     }
+    
     public void takeDamage(int damage) {
         hp -= damage; 
     }
@@ -42,4 +39,5 @@ public abstract class PlantTower {
     public int getRow() { 
         return row; 
     }
+    
 }

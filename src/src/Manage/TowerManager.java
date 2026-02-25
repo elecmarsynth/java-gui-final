@@ -25,7 +25,6 @@ public class TowerManager {
     }
     return false;
     }
-    // TowerManager.java
     public PlantTower getTowerAt(int col, int row) {
         for (PlantTower t : towers) {
             if (t.getCol() == col && t.getRow() == row) {

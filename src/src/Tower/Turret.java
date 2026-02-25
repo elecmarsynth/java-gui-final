@@ -2,7 +2,6 @@ package Tower;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-
 import Enemy.Enemy;
 import UI.ImageLoader;
 import UI.UpgradeTower;
@@ -13,14 +12,12 @@ public class Turret extends PlantTower implements UpgradeTower {
     private int level = 1;
     private final int MAX_LEVEL = 3;
     private int upgradeCost = 50; 
-
     public Turret(int col, int row) {
         super(col, row);
         this.maxHp = 200;
         
     }
     public void update(ArrayList<Enemy> enemies, int tileSize) {
-    // อัปเดตกระสุนเหมือนเดิม
     for (int i = 0; i < bullets.size(); i++) {
         bullets.get(i).update();
         if (!bullets.get(i).isActive) {
@@ -35,6 +32,8 @@ public class Turret extends PlantTower implements UpgradeTower {
     int range = 200; 
 
     for (Enemy e : enemies) {
+        double targetX = (e.getX() * tileSize) + (tileSize / 2.0);
+        double targetY = (e.getY() * tileSize) + (tileSize / 2.0);
         double dist = Math.hypot(e.getX() - centerX, e.getY() - centerY);
         if (dist < range) { 
             bullets.add(new Bullet(centerX, centerY, e));

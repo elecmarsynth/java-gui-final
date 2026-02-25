@@ -98,7 +98,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void update() {
     enemyM.update();
     towerM.update(enemyM.enemies);
-    waveM.update(enemyM.enemies, screenWidth, screenHeight); // ✅ เพิ่ม
+    waveM.update(enemyM.enemies, screenWidth, screenHeight);
     if (towerM.isBaseDestroyed()) {
         gameThread = null; 
         System.out.println("GAME OVER");

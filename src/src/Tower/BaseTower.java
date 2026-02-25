@@ -12,7 +12,7 @@ public class BaseTower extends PlantTower implements UpgradeTower {
 
     public BaseTower(int col, int row) {
         super(col, row);
-        this.maxHp = 20000;
+        this.maxHp = 50000;
         this.hp = maxHp;
     }
 
