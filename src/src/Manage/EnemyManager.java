@@ -1,5 +1,9 @@
+package Manage;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+
+import Enemy.Enemy;
+import panelCore.GamePanel;
 
 public class EnemyManager {
     GamePanel gp;

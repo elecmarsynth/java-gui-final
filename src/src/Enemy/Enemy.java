@@ -1,5 +1,9 @@
+package Enemy;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+
+import Tower.PlantTower;
+import panelCore.GamePanel;
 
 /**
  * คลาสแม่ของ Enemy ทุกตัว

@@ -1,5 +1,8 @@
+package UI;
 import java.awt.*;
 import javax.swing.*;
+
+import panelCore.GamePanel;
 
 public class TowerMenu extends JPanel {
     GamePanel gp;

@@ -1,7 +1,13 @@
+package frame;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import Tower.PlantTower;
+import UI.TowerMenu;
+import UI.UpgradeMenu;
+import panelCore.GamePanel;
 
 
 public class GameWindow {

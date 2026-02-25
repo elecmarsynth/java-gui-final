@@ -1,8 +1,9 @@
+package UI;
 
 public class Coins {
     private int coins = 100 ; //เงินตอนเริ่มเกม
 
-    Coins() {
+    public Coins() {
     }
 
     public int getCoins() {

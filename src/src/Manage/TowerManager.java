@@ -1,5 +1,12 @@
+package Manage;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import Enemy.Enemy;
+import Tower.BaseTower;
+import Tower.Miner;
+import Tower.PlantTower;
+import Tower.Turret;
+import panelCore.GamePanel;
 
 public class TowerManager {
     private GamePanel gp;
@@ -30,13 +37,13 @@ public class TowerManager {
     if (gp.getTileM().mapData[row][col] == 0) { 
         if (type == 1) { // Turret
             Turret t = new Turret(col, row);
-            t.addSpent(GamePanel.TURRET_COST); // ✅ บันทึกราคาซื้อ
+            t.addSpent(gp.getTurretCost()); // ✅ บันทึกราคาซื้อ
             towers.add(t);
             gp.getTileM().mapData[row][col] = 3;
         } else if (type == 2) { // Miner
             if (isAdjacentToGoldMine(col, row)) {
                 Miner m = new Miner(col, row);
-                m.addSpent(GamePanel.MINER_COST); // ✅ บันทึกราคาซื้อ
+                m.addSpent(gp.getMinerCost()); // ✅ บันทึกราคาซื้อ
                 towers.add(m);
                 gp.getTileM().mapData[row][col] = 3;
             } else {
@@ -60,7 +67,7 @@ private boolean isAdjacentToGoldMine(int col, int row) {
         }
         // ✅ เพิ่ม
         if (t instanceof Miner) {
-            ((Miner) t).collectGold(gp.getTileM().getGoldMines(), gp.coin_test);
+            ((Miner) t).collectGold(gp.getTileM().getGoldMines(), gp.getCoins());
         }
     }
 }

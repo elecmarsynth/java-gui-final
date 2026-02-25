@@ -1,9 +1,13 @@
+package Manage;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage; // 1. นำเข้า library รูปภาพ
 import java.io.IOException;      // 1. นำเข้า library อ่านไฟล์
 import java.util.ArrayList;        // 1. นำเข้าการจัดการ error
 import javax.imageio.ImageIO;
+
+import Tower.GoldMine;
+import panelCore.GamePanel;
 
 public class TileManager {
     

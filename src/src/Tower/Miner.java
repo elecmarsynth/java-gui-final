@@ -1,6 +1,10 @@
+package Tower;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+
+import UI.Coins;
+import UI.UpgradeTower;
 
 public class Miner extends PlantTower implements UpgradeTower {
     private int level = 1;

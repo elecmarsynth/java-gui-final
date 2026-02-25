@@ -1,5 +1,9 @@
+package UI;
 import java.awt.*;
 import javax.swing.*;
+
+import Tower.PlantTower;
+import panelCore.GamePanel;
 
 public class UpgradeMenu extends JPanel {
     GamePanel gp;
@@ -45,12 +49,12 @@ public class UpgradeMenu extends JPanel {
             JButton btnUpgrade = new JButton("Upgrade (" + ut.getUpgradeCost() + ")");
             btnUpgrade.addActionListener(e -> {
                 int cost = ut.getUpgradeCost();
-                if (gp.coin_test.spendCoins(cost)) { // ✅ ตัดเงินก่อน
+                if (gp.getCoins().spendCoins(cost)) { // ✅ ตัดเงินก่อน
                     if (ut.upgrade()) {
                         tower.addSpent(cost); // ✅ บันทึกค่าอัปเกรด
                         updateMenu(tower);
                     } else {
-                        gp.coin_test.addCoins(cost); // ✅ คืนเงินถ้าอัปเกรดไม่ได้
+                        gp.getCoins().addCoins(cost); // ✅ คืนเงินถ้าอัปเกรดไม่ได้
                     }
                 }
             });
@@ -76,7 +80,7 @@ public class UpgradeMenu extends JPanel {
 
     private void sellTower(PlantTower tower) {
         int sellPrice = (int)(tower.getTotalSpent() * 0.7);
-        gp.coin_test.addCoins(sellPrice);
+        gp.getCoins().addCoins(sellPrice);
         gp.getTileM().mapData[tower.getRow()][tower.getCol()] = 0;
         gp.getTowerM().sellTower(tower);
         towerMenu.showTower();

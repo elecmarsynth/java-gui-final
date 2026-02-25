@@ -1,5 +1,10 @@
+package Manage;
 import java.util.ArrayList;
 import java.util.Random;
+
+import Enemy.Enemy;
+import Enemy.MonsterType;
+import Enemy.rpgMonster;
 
 public class WaveManager {
     private int currentWave = 0;

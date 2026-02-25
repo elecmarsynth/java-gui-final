@@ -1,6 +1,16 @@
+package panelCore;
 import java.awt.*;
 import java.awt.event.*; 
 import javax.swing.*;
+
+import Manage.EnemyManager;
+import Manage.TileManager;
+import Manage.TowerManager;
+import Manage.WaveManager;
+import Tower.PlantTower;
+import UI.Coins;
+import UI.DisPlayTime;
+import frame.GameWindow;
 
 public class GamePanel extends JPanel implements Runnable {
     private int tileSize;
@@ -14,9 +24,9 @@ public class GamePanel extends JPanel implements Runnable {
     private TowerManager towerM;
     private GameWindow window;
     private int selectedTowerType = 0;
-    public static final int TURRET_COST = 20;  // add ราคา
-    public static final int MINER_COST = 10;  // add ราคา
-    Coins coin_test = new Coins();   //add
+    private final int TURRET_COST = 20;  // add ราคา
+    private final int MINER_COST = 10;  // add ราคา
+    private Coins coins = new Coins();   //add
     WaveManager waveM = new WaveManager();
     DisPlayTime hud = new DisPlayTime();
 
@@ -56,7 +66,7 @@ public class GamePanel extends JPanel implements Runnable {
                 else {
                     if (selectedTowerType != 0) {
                         int cost = (selectedTowerType == 1) ? TURRET_COST : MINER_COST; //add ตัดเงิน
-                        if (coin_test.spendCoins(cost)) {
+                        if (coins.spendCoins(cost)) {
                             towerM.addTower(col, row, selectedTowerType);
                         } else {
                             System.out.println("out of money");
@@ -131,6 +141,15 @@ public class GamePanel extends JPanel implements Runnable {
     public GameWindow getWindow(){
         return window;
     }
+    public Coins getCoins(){
+        return coins;
+    }
+    public int getTurretCost(){
+        return TURRET_COST;
+    }
+    public int getMinerCost(){
+        return MINER_COST;
+    }
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -140,7 +159,7 @@ public class GamePanel extends JPanel implements Runnable {
         enemyM.draw(g2);
         g2.setColor(Color.WHITE);
         g2.setFont(new Font("Phai", Font.BOLD, 24));
-        g2.drawString("💵 " + coin_test.getCoins(), 20, 40);
+        g2.drawString("💵 " + coins.getCoins(), 20, 40);
         hud.draw(g2, waveM, enemyM.enemies.size(), screenWidth);
         g2.dispose();
     }

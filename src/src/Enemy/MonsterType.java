@@ -1,3 +1,4 @@
+package Enemy;
 import java.awt.Color;
 public enum MonsterType {
     NORMAL(1.0, 1.0, Color.RED),

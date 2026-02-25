@@ -1,5 +1,8 @@
+package Tower;
 import java.awt.Color;
 import java.awt.Graphics2D;
+
+import Enemy.Enemy;
 
 public class Bullet {
     private int x, y;

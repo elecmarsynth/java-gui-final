@@ -1,4 +1,7 @@
+package UI;
 import java.awt.*;
+
+import Manage.WaveManager;
 
 public class DisPlayTime {
     public void draw(Graphics2D g2, WaveManager waveM, int enemyCount, int screenWidth) {
@@ -22,6 +25,5 @@ public class DisPlayTime {
         int timerWidth = fm.stringWidth(timerText);
         g2.drawString(timerText, screenWidth - timerWidth - 20, 40);
 
-        
     }
 }

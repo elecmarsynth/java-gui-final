@@ -1,5 +1,8 @@
+package Tower;
 import java.awt.Color;
 import java.awt.Graphics2D;
+
+import UI.UpgradeTower;
 
 public class BaseTower extends PlantTower implements UpgradeTower {
     private int level = 1;

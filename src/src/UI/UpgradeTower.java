@@ -1,3 +1,4 @@
+package UI;
 public interface UpgradeTower {
     // ฟังก์ชันสำหรับเรียกเพื่ออัปเกรด (ส่งกลับค่า true ถ้าอัปสำเร็จ)
     boolean upgrade();     

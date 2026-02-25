@@ -1,6 +1,10 @@
+package Tower;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+
+import Enemy.Enemy;
+import UI.UpgradeTower;
 
 public class Turret extends PlantTower implements UpgradeTower {
     private ArrayList<Bullet> bullets = new ArrayList<>();
