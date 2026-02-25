@@ -6,7 +6,7 @@ import frame.GameWindow;
 
 public class App {
     public static void main(String[] args) {
-        new LoginGameApp();
+        new GameWindow();
     }
     public static JPanel StartGamePanel(){
         new GameWindow();

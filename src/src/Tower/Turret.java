@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import Enemy.Enemy;
+import UI.ImageLoader;
 import UI.UpgradeTower;
 
 public class Turret extends PlantTower implements UpgradeTower {
@@ -76,8 +77,12 @@ public class Turret extends PlantTower implements UpgradeTower {
     public void draw(Graphics2D g2, int tileSize) {
         int x = col * tileSize;
         int y = row * tileSize;
+         if (ImageLoader.turret != null) {
+        g2.drawImage(ImageLoader.turret, x, y, tileSize, tileSize, null);
+    } else {
         g2.setColor(Color.GRAY);
-        g2.fillRect(x + 10, y + 10, tileSize - 20, tileSize - 20);
+        g2.fillRect(x + 5, y + 5, tileSize, tileSize);
+    }
         
         for (Bullet b : bullets) b.draw(g2);
     }

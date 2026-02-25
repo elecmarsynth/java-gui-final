@@ -2,6 +2,7 @@ package Tower;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import UI.ImageLoader;
 import UI.UpgradeTower;
 
 public class BaseTower extends PlantTower implements UpgradeTower {
@@ -47,9 +48,11 @@ public class BaseTower extends PlantTower implements UpgradeTower {
     public void draw(Graphics2D g2, int tileSize) {
         int x = col * tileSize;
         int y = row * tileSize;
+        if (ImageLoader.base != null) {
+        g2.drawImage(ImageLoader.base, x, y, tileSize, tileSize, null);
+    } else {
         g2.setColor(Color.BLUE);
-        g2.fillRect(x + 5, y + 5, tileSize - 10, tileSize - 10);
-        g2.setColor(Color.WHITE);
-        g2.drawString("Lv." + level, x + 10, y + 25);
+        g2.fillRect(x, y, tileSize, tileSize);
+    }
     }
 }

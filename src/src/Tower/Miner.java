@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import UI.Coins;
+import UI.ImageLoader;
 import UI.UpgradeTower;
 
 public class Miner extends PlantTower implements UpgradeTower {
@@ -65,8 +66,11 @@ public class Miner extends PlantTower implements UpgradeTower {
         int x = col * tileSize;
         int y = row * tileSize;
 
-        // 1. วาดฐาน (สีเหลืองทอง)
-        g2.setColor(Color.RED); 
-        g2.fillRect(x + 5, y + 5, tileSize - 10, tileSize - 10);
+        if (ImageLoader.miner != null) {
+        g2.drawImage(ImageLoader.miner, x, y, tileSize, tileSize, null);
+    } else {
+        g2.setColor(Color.RED);
+        g2.fillRect(x + 5, y + 5, tileSize, tileSize);
+    }
     }
 }

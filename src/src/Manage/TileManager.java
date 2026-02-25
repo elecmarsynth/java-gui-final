@@ -7,6 +7,7 @@ import java.util.ArrayList;        // 1. นำเข้าการจัดก
 import javax.imageio.ImageIO;
 
 import Tower.GoldMine;
+import UI.ImageLoader;
 import panelCore.GamePanel;
 
 public class TileManager {
@@ -74,38 +75,39 @@ public class TileManager {
 
     // 5. แก้ไขส่วนการวาด (Draw)
     public void draw(Graphics2D g2) {
-        for (int r = 0; r < gp.getMaxRow(); r++) {
-            for (int c = 0; c < gp.getMaxCol(); c++) {
-                int tileType = mapData[r][c];
-                
-                // คำนวณพิกัด x, y
-                int x = c * gp.getTileSize();
-                int y = r * gp.getTileSize();
+    for (int r = 0; r < gp.getMaxRow(); r++) {
+        for (int c = 0; c < gp.getMaxCol(); c++) {
+            int tileType = mapData[r][c];
+            int x = c * gp.getTileSize();
+            int y = r * gp.getTileSize();
 
-                // --- วาดหญ้า (Grass) ---
-                if (tileType == 0) {
-                    // ถ้าโหลดรูปสำเร็จ ให้วาดรูป
-                    if (grassImage != null) {
-                        g2.drawImage(grassImage, x, y, gp.getTileSize(), gp.getTileSize(), null);
-                    } else {
-                        // ถ้าโหลดไม่ติด ให้วาดสีเขียวเหมือนเดิม (กัน Error)
-                        g2.setColor(new Color(34, 139, 34));
-                        g2.fillRect(x, y, gp.getTileSize(), gp.getTileSize());
-                    }
-                } 
-                // --- วาดอย่างอื่น (ใช้สีไปก่อน ถ้ายังไม่มีรูป) ---
-                else {
-                    if (tileType == 9) g2.setColor(Color.DARK_GRAY);
-                    else if (tileType == 1) g2.setColor(Color.BLUE);
-                    else if (tileType == 2) g2.setColor(Color.ORANGE);
-                    
-                    g2.fillRect(x, y, gp.getTileSize(), gp.getTileSize());
-                }
-                
-                // เส้นตาราง (ถ้าอยากปิดก็ลบ 2 บรรทัดนี้ทิ้ง)
-                g2.setColor(new Color(0,0,0, 50));
-                g2.drawRect(x, y, gp.getTileSize(), gp.getTileSize());
+            // ✅ วาดหญ้าทุกช่องเสมอ (รวมถึงช่องที่มีป้อม)
+            if (grassImage != null) {
+                g2.drawImage(grassImage, x, y, gp.getTileSize(), gp.getTileSize(), null);
+            } else {
+                g2.setColor(new Color(34, 139, 34));
+                g2.fillRect(x, y, gp.getTileSize(), gp.getTileSize());
             }
+
+            // ✅ วาด overlay ทับหญ้า เฉพาะช่องพิเศษ
+            if (tileType == 9) {
+                g2.setColor(new Color(60, 60, 60, 180)); // กำแพง (โปร่งแสงนิดหน่อย)
+                g2.fillRect(x, y, gp.getTileSize(), gp.getTileSize());
+            } else if (tileType == 2) {
+                // เหมืองทอง — วาดรูปทับหญ้า
+                if (ImageLoader.goldMine != null) {
+                    g2.drawImage(ImageLoader.goldMine, x, y, gp.getTileSize(), gp.getTileSize(), null);
+                } else {
+                    g2.setColor(Color.ORANGE);
+                    g2.fillOval(x + 5, y + 5, gp.getTileSize() - 10, gp.getTileSize() - 10);
+                }
+            }
+            // ✅ type 1 (Base) และ type 3 (Tower) ปล่อยให้ TowerManager.draw() วาดเองทีหลัง
+
+            // เส้นตาราง
+            g2.setColor(new Color(0, 0, 0, 40));
+            g2.drawRect(x, y, gp.getTileSize(), gp.getTileSize());
         }
     }
+}
 }

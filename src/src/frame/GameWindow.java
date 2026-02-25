@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Tower.PlantTower;
+import UI.ImageLoader;
 import UI.TowerMenu;
 import UI.UpgradeMenu;
 import panelCore.GamePanel;
@@ -19,6 +20,7 @@ public GameWindow() {
     JFrame window = new JFrame();
     window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     window.setLayout(new BorderLayout());
+    ImageLoader.loadAll();
     GamePanel gamePanel = new GamePanel(this);
     window.add(gamePanel, BorderLayout.CENTER);
     towerMenu = new TowerMenu(gamePanel, cardLayout, bottomPanel);
