@@ -1,15 +1,14 @@
 package Tower;
+import UI.Coins;
+import UI.ImageLoader;
+import UI.UpgradeTower;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-import UI.Coins;
-import UI.ImageLoader;
-import UI.UpgradeTower;
-
 public class Miner extends PlantTower implements UpgradeTower {
     private int level = 1;
-    private final int MAX_LEVEL = 2; // เหมืองอัปได้แค่ 2 เลเวล
+    private final int MAX_LEVEL = 3; // เหมืองอัปได้แค่ 3 เลเวล
     private int upgradeCost = 100;   // เหมืองอัปแพงกว่าป้อมปืน
     private int timer = 0;
     private int goldCollected = 0;
@@ -25,7 +24,7 @@ public class Miner extends PlantTower implements UpgradeTower {
         for (GoldMine mine : mines) {
             if ((Math.abs(this.col - mine.col) == 1 && this.row == mine.row) ||
                 (Math.abs(this.row - mine.row) == 1 && this.col == mine.col)) {
-                int earned = 10;
+                int earned = (level == 1) ? 10 : (level == 2) ? 15 : 20;
                 goldCollected += earned;
                 mine.goldAmount -= earned;
                 coins.addCoins(earned); // ✅ เพิ่มเงินจริงๆ
@@ -48,7 +47,9 @@ public class Miner extends PlantTower implements UpgradeTower {
         level++;
         if (level == 2) {
             this.maxHp += 50;
-            // เพิ่มอัตราการขุดเงินที่นี่
+        } else if (level == 3) {
+            this.maxHp += 100;
+            this.upgradeCost = 0;
         }
         this.hp = this.maxHp;
         return true;

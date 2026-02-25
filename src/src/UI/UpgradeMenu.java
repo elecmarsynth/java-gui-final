@@ -1,8 +1,7 @@
 package UI;
+import Tower.PlantTower;
 import java.awt.*;
 import javax.swing.*;
-
-import Tower.PlantTower;
 import panelCore.GamePanel;
 
 public class UpgradeMenu extends JPanel {
@@ -65,10 +64,12 @@ public class UpgradeMenu extends JPanel {
             label.setForeground(Color.WHITE);
             this.add(label);
         }
-        int sellPrice = (int)(tower.getTotalSpent() * 0.7);
-        JButton btnSell = new JButton("Sell (+" + sellPrice + "💵)");
-        btnSell.addActionListener(e -> sellTower(tower));
-        this.add(btnSell);
+        if (!(tower instanceof Tower.BaseTower)) {
+            int sellPrice = (int)(tower.getTotalSpent() * 0.7);
+            JButton btnSell = new JButton("Sell (+" + sellPrice + "💵)");
+            btnSell.addActionListener(e -> sellTower(tower));
+            this.add(btnSell);
+        }
 
         JButton btnClose = new JButton("Back");
         btnClose.addActionListener(e -> towerMenu.showTower());

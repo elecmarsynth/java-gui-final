@@ -1,11 +1,11 @@
 package Manage;
-import java.awt.Graphics2D;
-import java.util.ArrayList;
 import Enemy.Enemy;
 import Tower.BaseTower;
 import Tower.Miner;
 import Tower.PlantTower;
 import Tower.Turret;
+import java.awt.Graphics2D;
+import java.util.ArrayList;
 import panelCore.GamePanel;
 
 public class TowerManager {
@@ -72,7 +72,8 @@ private boolean isAdjacentToGoldMine(int col, int row) {
     }
 }
     public void sellTower(PlantTower tower) { //ขายทิ้ง
-    towers.remove(tower);
+        if (tower instanceof BaseTower) return; // ขาย BaseTower ไม่ได้
+        towers.remove(tower);
     }
     public PlantTower getTowerBlockingPath(Enemy enemy, double targetX, double targetY, int tileSize) {
     // คำนวณทิศทางที่ enemy จะเดิน
