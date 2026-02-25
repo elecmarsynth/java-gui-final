@@ -6,6 +6,7 @@ import Tower.PlantTower;
 import Tower.Turret;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import panelCore.GamePanel;
 
 public class TowerManager {
@@ -47,7 +48,13 @@ public class TowerManager {
                 towers.add(m);
                 gp.getTileM().mapData[row][col] = 3;
             } else {
-                System.out.println("Can only place Miner near Gold Mine!");
+                javax.swing.SwingUtilities.invokeLater(() -> {
+                    JOptionPane.showMessageDialog(gp,
+                        "ต้องอยู่ใกล้ๆกับแร่ทองเท่านัน! \nคุณโดนหักค่าซีเลง จำนวน 10 coins", 
+                        "Information", 
+                        JOptionPane.INFORMATION_MESSAGE);
+                });
+                System.out.println("ต้องอยู่ใกล้ ๆกับแร่ทองเท่านัน! \nคุณโดนหักค่าซีเลง จำนวน 10 coins");
             }
         }
     }

@@ -1,12 +1,12 @@
 package frame;
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import Tower.PlantTower;
 import UI.ImageLoader;
 import UI.TowerMenu;
 import UI.UpgradeMenu;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import panelCore.GamePanel;
 public class GameWindow {
     private CardLayout cardLayout = new CardLayout();
@@ -26,8 +26,11 @@ public GameWindow() {
     bottomPanel.add(upgradeMenu, "UpgradeMenu");
     window.add(bottomPanel, BorderLayout.SOUTH);
     window.pack();                      
+    // window.setSize(1920, 720);
     window.setLocationRelativeTo(null); 
     window.setVisible(true);
+
+    System.out.println(window.getWidth() + "x" + window.getHeight());
     }
     public void showUpgrade(PlantTower tower) {
     upgradeMenu.showUpgrade(tower); 
