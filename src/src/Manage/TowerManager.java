@@ -39,7 +39,6 @@ public class TowerManager {
         }
         return null;
     }
-
     public void addTower(int col, int row, int type) {
         if (gp.getTileM().mapData[row][col] == 0) {
             if (type == 1) {
@@ -69,7 +68,7 @@ public class TowerManager {
     private boolean isAdjacentToGoldMine(int col, int row) {
         int[][] data = gp.getTileM().mapData;
         if (data[row - 1][col] == 2 || data[row + 1][col] == 2 ||
-                data[row][col - 1] == 2 || data[row][col + 1] == 2)
+            data[row][col - 1] == 2 || data[row][col + 1] == 2)
             return true;
         return false;
     }
@@ -90,7 +89,6 @@ public class TowerManager {
             return;
         towers.remove(tower);
     }
-
     public PlantTower getTowerBlockingPath(Enemy enemy, double targetX, double targetY, int tileSize) {
         double diffX = targetX - enemy.getX();
         double diffY = targetY - enemy.getY();
@@ -103,7 +101,6 @@ public class TowerManager {
         int nextRow = (int) (nextY / tileSize);
         return getTowerAt(nextCol, nextRow);
     }
-
     public void removeDestroyedTowers() {
         for (PlantTower t : towers) {
             if (t.isDestroyed()) {

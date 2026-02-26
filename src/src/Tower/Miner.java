@@ -19,21 +19,16 @@ public class Miner extends PlantTower implements UpgradeTower {
     public void collectGold(ArrayList<GoldMine> mines, Coins coins) {
     timer++;
     if (timer >= 300) {
-        for (GoldMine mine : mines) {
-            if ((Math.abs(this.col - mine.col) == 1 && this.row == mine.row) ||
-                (Math.abs(this.row - mine.row) == 1 && this.col == mine.col)) {
                 int earned = (level == 1) ? 10 : (level == 2) ? 15 : 20;
                 coins.addCoins(earned); 
-            }
-        }
-        timer = 0;
-    }
+                timer = 0;
+                }
     }
     public String getName() { 
         return "Gold Miner"; 
     }
     public int getUpgradeCost() { 
-        return 200 * level; 
+        return upgradeCost * level; 
     }
     @Override
     public boolean upgrade() {

@@ -36,7 +36,7 @@ public class TileManager {
         while (minesToPlace > 0) {
             int r = (int)(Math.random() * (gp.getMaxRow() - 2)) + 1;
             int c = (int)(Math.random() * (gp.getMaxCol() - 2)) + 1;
-            if (mapData[r][c] == 0 && (Math.abs(r - gp.getMaxRow()/2) + Math.abs(c - gp.getMaxCol()/2) > 2)) {
+            if (mapData[r][c] == 0 ) {
                 mapData[r][c] = 2;
                 goldMines.add(new GoldMine(c, r)); 
                 minesToPlace--;
